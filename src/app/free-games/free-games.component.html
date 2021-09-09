@@ -83,6 +83,7 @@
           <th scope="col">Titulo</th>
           <th scope="col">Plataforma</th>
           <th scope="col">Genero</th>
+          <th scope="col">Imagen</th>
         </tr>
       </thead>
       <tbody>
@@ -92,6 +93,14 @@
           <td>{{ game.title }}</td>
           <td>{{ game.platform }}</td>
           <td>{{ game.genre }}</td>
+          <td>
+            <img
+              src="{{ game.thumbnail }}"
+              class="card-img-top"
+              alt="..."
+              style="width: 10rem"
+            />
+          </td>
         </tr>
       </tbody>
     </table>

@@ -39,6 +39,7 @@ export class FreeGamesComponent implements OnInit {
         this.showTable = true;
         this.gamesNotFound = false;
         this.games = data;
+        console.log(data);
       }
     },
       error => {
