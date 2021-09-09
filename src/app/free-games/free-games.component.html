@@ -68,6 +68,15 @@
         Todos los Juegos
       </button>
     </div>
+    <input
+      *ngIf="dataGames"
+      type="text"
+      class="form-control mt-2"
+      placeholder="Filtrar por nombre ..."
+      aria-label="Filtrar por nombre"
+      aria-describedby="basic-addon2"
+      [(ngModel)]="plataformaBuscada"
+    />
   </div>
 
   <div class="row justify-content-center">
@@ -76,33 +85,35 @@
         No se encontraron Juegos
       </div>
     </div>
-    <table *ngIf="showTable" class="table table-dark">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Titulo</th>
-          <th scope="col">Plataforma</th>
-          <th scope="col">Genero</th>
-          <th scope="col">Imagen</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let game of games | slice: 0:50">
-          <!--Aca limitas la cantidad que queres mostrar-->
-          <th scope="row">{{ game.id }}</th>
-          <td>{{ game.title }}</td>
-          <td>{{ game.platform }}</td>
-          <td>{{ game.genre }}</td>
-          <td>
-            <img
-              src="{{ game.thumbnail }}"
-              class="card-img-top"
-              alt="..."
-              style="width: 10rem"
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div style="overflow: auto; width: 100%; height: 600px">
+      <table *ngIf="showTable" class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Plataforma</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let game of games | slice: 0:50">
+            <!--Aca limitas la cantidad que queres mostrar-->
+            <th scope="row">{{ game.id }}</th>
+            <td>{{ game.title }}</td>
+            <td>{{ game.platform }}</td>
+            <td>{{ game.genre }}</td>
+            <td>
+              <img
+                src="{{ game.thumbnail }}"
+                class="card-img-top"
+                alt="..."
+                style="width: 10rem"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

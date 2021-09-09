@@ -19,12 +19,9 @@ export class FreeGamesComponent implements OnInit {
   gamesNotFound: boolean = false;
   selectedCategory: boolean = false;
   selectedPlataforma: boolean = false;
+  dataGames: boolean = false;
   categoriesString = "mmorpg, shooter, strategy, moba, racing, sports, social, sandbox, open-world, survival, pvp, pve, pixel, voxel, zombie, turn-based, first-person, third-Person, top-down, tank, space, sailing, side-scroller, superhero, permadeath, card, battle-royale, mmo, mmofps, mmotps, 3d, 2d, anime, fantasy, sci-fi, fighting, action-rpg, action, military, martial-arts, flight, low-spec, tower-defense, horror, mmorts";
   arrayCategories = this.categoriesString.split(', ');
-
-
-
-
 
   constructor(
     private _freeGamesService: FreeGamesService,
@@ -39,12 +36,16 @@ export class FreeGamesComponent implements OnInit {
         this.showTable = true;
         this.gamesNotFound = false;
         this.games = data;
+        this.dataGames = true;
+        this.selectedPlataforma = false;
+        this.selectedCategory = false;
         console.log(data);
       }
     },
       error => {
         if (error.status == 404) {
           this.gamesNotFound = true;
+          this.dataGames = false;
         }
       });
   }
@@ -59,16 +60,19 @@ export class FreeGamesComponent implements OnInit {
           this.games = data;
           this.selectedPlataforma = false;
           this.selectedCategory = false;
+          this.dataGames = true;
         }
       }, error => {
         if (error.status == 404) {
           this.gamesNotFound = true;
+          this.dataGames = false;
         }
       });
     } else {
       this.showTable = false;
       this.games = [];
       this.selectedPlataforma = true;
+      this.dataGames = false;
       return true;
     }
 
@@ -84,16 +88,19 @@ export class FreeGamesComponent implements OnInit {
           this.games = data;
           this.selectedPlataforma = false;
           this.selectedCategory = false;
+          this.dataGames = true;
         }
       }, error => {
         if (error.status == 404) {
           this.gamesNotFound = true;
+          this.dataGames = false;
         }
       });
     } else {
       this.showTable = false;
       this.games = [];
       this.selectedCategory = true;
+      this.dataGames = false;
       return true;
     }
   }
