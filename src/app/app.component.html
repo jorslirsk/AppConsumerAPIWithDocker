@@ -1,12 +1,27 @@
-<div class="container ">
-    <div class=" row justify-content-center mt-4">
-        <div class="col-12 text-center ">
-            <div class="jumbotron" style="background-color: rgb(74, 119, 113);">
-                <h1 class="display-4" style="color :white">{{ title }}</h1>
-                <hr class="my-4">
-                <app-free-games></app-free-games>
-            </div>
-
-        </div>
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-12 text-center">
+      <div class="jumbotron" style="background-color: rgb(74, 119, 113)">
+        <img
+          src="../assets/app/logoutn.png"
+          alt="..."
+          style="width: max-content"
+        />
+        <h1 class="display-4" style="color: white">{{ title }}</h1>
+        <h1 class="display-4" style="color: white">{{ subTitle }}</h1>
+        <hr class="my-4" />
+        <app-free-games></app-free-games>
+      </div>
+      <div class="row justify-content-center">
+        <h4 class="font-monospace">
+          Creado por
+          <abbr title="https://github.com/jorslirsk" class="initialism"
+            ><a href="https://github.com/jorslirsk" class="pe-auto"
+              >Mariano Jaliff</a
+            ></abbr
+          >
+        </h4>
+      </div>
     </div>
+  </div>
 </div>

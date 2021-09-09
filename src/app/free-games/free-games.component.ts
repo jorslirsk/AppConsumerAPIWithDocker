@@ -10,6 +10,7 @@ import { FilterPipe } from '../free-games/pipe/filter.pipe';
 })
 export class FreeGamesComponent implements OnInit {
   title = 'Computacion en la nube - API CONSUMER';
+
   public games: Game[] = [];
   showTable: boolean = false;
   filterGame = '';
