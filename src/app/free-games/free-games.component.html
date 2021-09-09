@@ -1,0 +1,99 @@
+<!-- <input type="text" [(ngModel)]="name" /> -->
+
+<div class="container mt-10 pb-3">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <h1 class="display-4 text-left" style="color: white">
+        Busqueda por Plataforma
+      </h1>
+      <div class="input-group mb-3 mt-4">
+        <select
+          class="form-select"
+          aria-label=".form-select-lg example"
+          [(ngModel)]="plataformaBuscada"
+        >
+          <option value="pc">pc</option>
+          <option value="browser">browser</option>
+          <option value="all">all</option>
+        </select>
+        <div class="input-group-append">
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="getGamesByPlatform()"
+          >
+            Buscar
+          </button>
+        </div>
+      </div>
+      <h1 class="display-4 text-left" style="color: white">
+        Busqueda por Categoria
+      </h1>
+      <div class="input-group mb-3 mt-4">
+        <select
+          class="form-select"
+          aria-label=".form-select-lg example"
+          [(ngModel)]="categoriaBuscada"
+        >
+          <option *ngFor="let categorie of arrayCategories">
+            {{ categorie }}
+          </option>
+        </select>
+        <div class="input-group-append">
+          <button
+            class="btn btn-danger"
+            type="button"
+            (click)="getGamesByCategoryOrTag()"
+          >
+            Buscar
+          </button>
+        </div>
+        <div *ngIf="selectedCategory" class="col-12 mt-4">
+          <div class="alert alert-danger" role="alert">
+            Debe seleccionar una categoria
+          </div>
+        </div>
+        <div *ngIf="selectedPlataforma" class="col-12 mt-4">
+          <div class="alert alert-danger" role="alert">
+            Debe seleccionar una plataforma
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-success btn-lg text-center"
+        (click)="getLiveGamesList()"
+      >
+        Todos los Juegos
+      </button>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div *ngIf="gamesNotFound" class="col-12 mt-4">
+      <div class="alert alert-danger" role="alert">
+        No se encontraron Juegos
+      </div>
+    </div>
+    <table *ngIf="showTable" class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Plataforma</th>
+          <th scope="col">Genero</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let game of games | slice: 0:50">
+          <!--Aca limitas la cantidad que queres mostrar-->
+          <th scope="row">{{ game.id }}</th>
+          <td>{{ game.title }}</td>
+          <td>{{ game.platform }}</td>
+          <td>{{ game.genre }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
