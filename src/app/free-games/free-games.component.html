@@ -72,10 +72,10 @@
       *ngIf="dataGames"
       type="text"
       class="form-control mt-2"
-      placeholder="Filtrar por nombre ..."
-      aria-label="Filtrar por nombre"
+      placeholder="Filtrar por titulo ..."
+      aria-label="Filtrar por titulo"
       aria-describedby="basic-addon2"
-      [(ngModel)]="plataformaBuscada"
+      [(ngModel)]="filterGames"
     />
   </div>
 
@@ -97,7 +97,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let game of games | slice: 0:50">
+          <tr *ngFor="let game of games | slice: 0:50 | filter: filterGames">
             <!--Aca limitas la cantidad que queres mostrar-->
             <th scope="row">{{ game.id }}</th>
             <td>{{ game.title }}</td>
